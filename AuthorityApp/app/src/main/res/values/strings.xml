@@ -287,4 +287,7 @@
     <string name="take_a_job">Take a job</string>
     <string name="review_a_job">Review a job</string>
     <string name="highscores">Highscores</string>
+    <string name="title_activity_take_ajob">TakeAJobActivity</string>
+    <string name="title_activity_review_ajob">ReviewAJobActivity</string>
+    <string name="title_activity_highscores">HighscoresActivity</string>
 </resources>
