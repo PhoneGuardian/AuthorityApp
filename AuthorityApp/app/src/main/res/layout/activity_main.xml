@@ -1,12 +1,58 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context="it.polimi.guardian.authorityapp.MainActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_main"
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription"
+        />
+
+
+    <Button
+        android:id="@+id/btn_take_a_job"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_normal"
+        android:layout_centerInParent="true"
+        android:text="@string/take_a_job"
+        android:drawableLeft="@drawable/alert_icon"
+        style="@style/home_button_rounded_overlay_tall"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/btn_take_a_job"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/title_header"
+        />
+    <Button
+        android:id="@+id/btn_review_a_job"
+        android:layout_below="@id/btn_take_a_job"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_normal"
+        android:layout_centerInParent="true"
+        android:text="@string/review_a_job"
+        android:drawableLeft="@drawable/map_icon"
+        style="@style/home_button_rounded_overlay_tall"
+        />
+    <Button
+        android:id="@+id/btn_highscores"
+        android:layout_below="@+id/btn_review_a_job"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_normal"
+        android:layout_centerInParent="true"
+        android:text="@string/highscores"
+        android:drawableLeft="@drawable/alert_icon"
+        style="@style/home_button_rounded_overlay_tall"
+        />
 
 </RelativeLayout>

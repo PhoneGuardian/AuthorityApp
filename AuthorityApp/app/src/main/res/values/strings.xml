@@ -284,4 +284,7 @@
     </string-array>
     <string name="type_prompt">Choose staff type: </string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="take_a_job">Take a job</string>
+    <string name="review_a_job">Review a job</string>
+    <string name="highscores">Highscores</string>
 </resources>

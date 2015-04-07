@@ -137,8 +137,8 @@ public class RegisterActivity extends  Activity  implements OnClickListener {
                     Toast.makeText(this, "Invalid input data!", LENGTH_LONG).show();
                 else
                 {
-                    disableSignUp();//api key fe391b8a9148b9fdab66fcbb0ab3524a3afd2cee
-                    Cognalys.verifyMobileNumber(context, "d11cf058b1991bada9be7114bbe471410d433454", "bd0f84a2509f4f0f92b89b5", phone, new VerificationListner() {
+                    disableSignUp();
+                    Cognalys.verifyMobileNumber(context, "b8e95c3d942608bb12aa7af47961a1215694713d", "3db548d7fd8247278b2dc3d", phone, new VerificationListner() {
                         @Override
                         public void onVerificationStarted() {
                         }
@@ -146,7 +146,7 @@ public class RegisterActivity extends  Activity  implements OnClickListener {
                         @Override
                         public void onVerificationSuccess() {
                             enableSignUp();
-                            checkAndSaveUser(userNm, phone, type);
+                            checkAndSaveUser(userNm, Cognalys.getCountryCode(RegisterActivity.this)+ phone, type);
                         }
 
                         @Override
