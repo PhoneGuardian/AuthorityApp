@@ -130,7 +130,7 @@ public class RegisterActivity extends  Activity  implements OnClickListener {
                 final String userNm =etUsername.getText().toString();
                 EditText etPhone = (EditText) findViewById(R.id.et_register_phone_num);
                 final String phone =etPhone.getText().toString();
-                final String type = dropdown.getSelectedItem().toString();
+                final String type = dropdown.getSelectedItem().toString().substring(0,1);
 
 
                 if(userNm.compareTo("")==0 ||  phone.compareTo("")==0  || type.compareTo("")==0)
