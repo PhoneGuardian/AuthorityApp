@@ -46,11 +46,11 @@
 	<string name="username_comment">Comment username:</string>
 	<string name="comment">Comment:</string>
 	
-	<string name="show_markers_on_map">Show on mao</string>
+	<string name="show_markers_on_map">Show on map</string>
 	<string name="show_list">Show in list</string>
 	<string name="add_comment">Add comment</string>
 	<string name="view_details">Marker details</string>
-	<string name="list_is_empty">Search result: None</string>
+	<string name="list_is_empty">The list is empty.</string>
 	
 	<string name="radius">Radius</string>
 	<string name="location">Location</string>
@@ -290,4 +290,5 @@
     <string name="title_activity_take_ajob">TakeAJobActivity</string>
     <string name="title_activity_review_ajob">ReviewAJobActivity</string>
     <string name="title_activity_highscores">HighscoresActivity</string>
+    <string name="jobs_list">Jobs list:</string>
 </resources>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ln1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_selector"
+    android:orientation="vertical"
+    android:padding="5dip" >
+
+    <LinearLayout
+        android:id="@+id/ln2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#B404d4"
+        android:layout_weight="2">
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+                <TextView
+                    android:id="@+id/tv_job_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+        <LinearLayout
+            android:id="@+id/ln4"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#B40404"
+            android:orientation="horizontal" >
+            <Button
+                android:id="@+id/btn_row_take"
+                android:text="Take this job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/home_button_rounded_overlay_tall"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ln5"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#14f4d4"
+            android:orientation="horizontal" >
+            <Button
+                android:id="@+id/btn_row_view"
+                android:text="View this job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/home_button_rounded_overlay_tall"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
