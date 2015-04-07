@@ -26,7 +26,7 @@ public class FileHelper extends Activity{
         OutputStream outputStream = null;
 
         try {
-            File dir = getAppDirectory("PhoneGuardian");
+            File dir = getAppDirectory("GuardianAuthority");
             File file = new File(dir, filename);
             String filepath = file.getAbsolutePath();
             FileOutputStream fileOutputStream = new FileOutputStream(file);
@@ -65,7 +65,7 @@ public class FileHelper extends Activity{
         String ret = "";
 
         try {
-            File dir = getAppDirectory("PhoneGuardian");
+            File dir = getAppDirectory("GuardianAuthority");
             File file = new File(dir, filename);
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String receiveString = "";
@@ -121,7 +121,7 @@ public class FileHelper extends Activity{
     }
     public String getAbsolutePath(String filename){
 
-        File dir = getAppDirectory("PhoneGuardian");
+        File dir = getAppDirectory("GuardianAuthority");
         File file = new File(dir, filename);
         String filepath = file.getAbsolutePath();
         return filepath;
