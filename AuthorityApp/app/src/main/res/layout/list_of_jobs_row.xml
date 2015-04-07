@@ -12,7 +12,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="#B404d4"
         android:layout_weight="2">
         <ScrollView
             android:id="@+id/scrollView1"
@@ -41,14 +40,13 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#B40404"
             android:orientation="horizontal" >
             <Button
                 android:id="@+id/btn_row_take"
                 android:text="Take this job"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                style="@style/home_button_rounded_overlay_tall"
+                style="@style/button_rounded_transparent_normal"
                 />
         </LinearLayout>
         <LinearLayout
@@ -56,14 +54,13 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#14f4d4"
             android:orientation="horizontal" >
             <Button
                 android:id="@+id/btn_row_view"
                 android:text="View this job"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                style="@style/home_button_rounded_overlay_tall"
+                style="@style/button_rounded_transparent_normal"
                 />
         </LinearLayout>
 

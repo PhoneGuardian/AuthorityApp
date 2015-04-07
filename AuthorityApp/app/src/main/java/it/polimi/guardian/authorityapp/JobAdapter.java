@@ -82,7 +82,7 @@ public class JobAdapter extends BaseAdapter implements Serializable{
         @Override
         public void onClick(View v) {
             final int position = lvAllJobs.getPositionForView((View) v.getParent());
-            Toast.makeText(ctx,"Take clicked, row %d"+ position,Toast.LENGTH_SHORT);
+            Toast.makeText(ctx,"Take clicked, row "+ position,Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -90,7 +90,17 @@ public class JobAdapter extends BaseAdapter implements Serializable{
         @Override
         public void onClick(View v) {
             final int position = lvAllJobs.getPositionForView((View) v.getParent());
-            Toast.makeText(ctx, "View clicked, row %d" + position, Toast.LENGTH_SHORT);
+            Toast.makeText(ctx, "View clicked, row " + position, Toast.LENGTH_SHORT).show();
         }
     };
+
+    @Override
+    public boolean  areAllItemsEnabled() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled(int position) {
+        return false;
+    }
 }

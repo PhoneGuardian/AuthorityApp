@@ -36,6 +36,12 @@ public class TakeAJobActivity extends Activity {
         jObjList.add(j2);
         //////////////////////////////
         lvJobs.setAdapter(new JobAdapter(this, lvJobs,jObjList));
+        //To select manually the buttons with the trackball
+        lvJobs.setItemsCanFocus(true);
+        //And to disable the focus on the whole list items
+        lvJobs.setFocusable(false);
+        lvJobs.setFocusableInTouchMode(false);
+        lvJobs.setClickable(false);
     }
 
 

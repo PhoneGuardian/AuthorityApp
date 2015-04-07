@@ -24,6 +24,7 @@
         android:id="@+id/list_of_jobs"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_jobs_list"
         android:divider="#b5b5b5"
         android:dividerHeight="1dp"
         android:listSelector="@drawable/list_selector" />
