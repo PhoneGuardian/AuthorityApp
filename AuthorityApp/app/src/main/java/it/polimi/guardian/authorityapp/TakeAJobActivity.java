@@ -39,7 +39,7 @@ public class TakeAJobActivity extends Activity {
         tv_list_is_empty = (TextView) findViewById(R.id.tv_list_is_empty);
         u = User.getInstance();
         jObjList = new ArrayList<>();
-        adapter = new JobAdapter(this, lvJobs,jObjList);
+        adapter = new JobAdapter(this, this, lvJobs,jObjList);
         //php get
         getAvalableJobsFromServer();
         lvJobs.setAdapter(adapter);
@@ -96,7 +96,7 @@ public class TakeAJobActivity extends Activity {
                             JSONObject jObj = events_response.getJSONObject(i);
 
                             events[i] = new Event();
-                            events[i].id = jObj.getString(Tags.TAG_ID);
+                            events[i].setId(jObj.getString(Tags.TAG_ID));
                             events[i].setAddress(jObj.getString(Tags.TAG_ADDRESS));
                             events[i].setUser_phone(jObj.getString(Tags.TAG_USER_PHONE));
                             events[i].setType_of_event(jObj.getString(Tags.TAG_TYPE_OF_EVENT));

@@ -16,4 +16,5 @@ public class Tags {
     public static final String TAG_ACCURACY = "location_acc";
     public static final String TAG_ANONYMOUS = "anonymous";
     public static final String TAG_ID = "event_id";
+    public static final String TAG_MESSAGE = "message";
 }
