@@ -4,42 +4,40 @@ package it.polimi.guardian.authorityapp;
  * Created by Nemanja on 07/04/2015.
  */
 public class Job {
-    private int jobId;
-    private int eventId;
-    private int authId;
-    private String jobDescription;
+    private Event event;
+    private String authUsername;
+    private String type;
     private String status;
 
-    public int getJobId() {
-        return jobId;
+    public Job(Event event) {
+        this.event = event;
+        authUsername = User.getInstance().getUsername();
+        type = User.getInstance().getType();
+        status = "taken";
     }
 
-    public void setJobId(int jobId) {
-        this.jobId = jobId;
+    public Event getEvent() {
+        return event;
     }
 
-    public int getEventId() {
-        return eventId;
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
-    public void setEventId(int eventId) {
-        this.eventId = eventId;
+    public String getAuthUsername() {
+        return authUsername;
     }
 
-    public int getAuthId() {
-        return authId;
+    public void setAuthUsername(String authUsername) {
+        this.authUsername = authUsername;
     }
 
-    public void setAuthId(int authId) {
-        this.authId = authId;
+    public String getType() {
+        return type;
     }
 
-    public String getJobDescription() {
-        return jobDescription;
-    }
-
-    public void setJobDescription(String jobDescription) {
-        this.jobDescription = jobDescription;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getStatus() {

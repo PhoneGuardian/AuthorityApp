@@ -71,11 +71,11 @@ public class FileHelper extends Activity{
             String receiveString = "";
             StringBuilder stringBuilder = new StringBuilder();
 
-            while ( (receiveString = bufferedReader.readLine()) != null ) {//kupi se linija
-                stringBuilder.append(receiveString);//i doda se u stringBuilder
+            while ( (receiveString = bufferedReader.readLine()) != null ) {//take a line
+                stringBuilder.append(receiveString);//and add it into stringBuilder
             }
 
-            ret = stringBuilder.toString();//kada se sve procita, smesti se u ret
+            ret = stringBuilder.toString();//when everything is read, it is put in variable ret
             bufferedReader.close();
         }
         catch (FileNotFoundException e) {
@@ -95,18 +95,18 @@ public class FileHelper extends Activity{
             File sdCard = Environment.getExternalStorageDirectory();
 
             appDirectory = new File(
-                    sdCard, 									//sd kartica
-                    appFolderName								//+ ime foldera
+                    sdCard, 									//sd card
+                    appFolderName								//+ folder name
             );
 
             if (appDirectory != null){
-                if (! appDirectory.mkdirs()){ //kreira direktorijum imenom fajla storageDir
+                if (! appDirectory.mkdirs()){ //create directory under filename of storageDir variable value
 
                     //true if the directory was created,
                     //false on failure or if the directory already existed.
                     if (! appDirectory.exists()){
-                        //ako direktorijum ne postoji
-                        Toast.makeText(this, "Neuspesno kreiranje direktorijuma aplikacije.",Toast.LENGTH_SHORT).show();
+                        //if directory doesn't exist
+                        Toast.makeText(this, "Failed to create app directory.",Toast.LENGTH_SHORT).show();
                         return null;
                     }
                 }
@@ -114,7 +114,7 @@ public class FileHelper extends Activity{
 
         }
         else{
-            Toast.makeText(this, "SD kartica nije dostupna za ČITANJE/UPIS.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "SD card is not available for READ/WRITE operations.",Toast.LENGTH_SHORT).show();
         }
 
         return appDirectory;

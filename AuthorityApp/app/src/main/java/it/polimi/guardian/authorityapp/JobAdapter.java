@@ -15,6 +15,7 @@ import android.widget.Toast;
 import android.support.v4.widget.CursorAdapter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ public class JobAdapter extends BaseAdapter implements Serializable{
 
     protected ListView lvAllJobs;
     private Context ctx;
-    private final List<Job> jobsList;
+    private List<Job> jobsList = new ArrayList<>();
     private static LayoutInflater inflater = null;
 
     protected static class RowViewHolder {
@@ -34,15 +35,20 @@ public class JobAdapter extends BaseAdapter implements Serializable{
         public Button btnViewOnMap;
     }
 
-    public JobAdapter(Context context, ListView lvJobs, List<Job> jobObjList){
+    public JobAdapter(Context context, ListView lvJobs, List<Job> jObjList){
         ctx = context;
         lvAllJobs = lvJobs;
-        jobsList = jobObjList;
+        jobsList = new ArrayList<>();
+        for(Job j: jObjList){
+            jobsList.add(j);
+        }
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
+        if(jobsList == null)
+            return 0;
         return jobsList.size();
     }
 
@@ -53,7 +59,7 @@ public class JobAdapter extends BaseAdapter implements Serializable{
 
     @Override
     public long getItemId(int position) {
-        return jobsList.get(position).getJobId();
+        return position;
     }
 
     @Override
@@ -68,7 +74,7 @@ public class JobAdapter extends BaseAdapter implements Serializable{
         holder.btnTakeAJob = (Button) view.findViewById(R.id.btn_row_take);
         holder.btnViewOnMap = (Button) view.findViewById(R.id.btn_row_view);
         //set their values
-        holder.tvDescription.setText(jobsList.get(position).getJobDescription());
+        holder.tvDescription.setText(jobsList.get(position).getEvent().getDescription());
         holder.btnTakeAJob.setOnClickListener(mOnBtnTakeClickListener);
         holder.btnViewOnMap.setOnClickListener(mOnBtnViewClickListener);
         //tag holder object to specific row-view object
@@ -102,5 +108,12 @@ public class JobAdapter extends BaseAdapter implements Serializable{
     @Override
     public boolean isEnabled(int position) {
         return false;
+    }
+
+    public void updateJobs(List<Job> jObjList) {
+        jobsList.clear();
+        for(Job j: jObjList){
+            jobsList.add(j);
+        }
     }
 }
