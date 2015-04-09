@@ -20,15 +20,24 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/font_huge"
         android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/btn_refresh"
+        android:layout_below="@id/tv_jobs_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/refresh"
+        android:drawableLeft="@drawable/map_icon"
+        style="@style/home_button_rounded_overlay_tall"
+        />
     <ListView
         android:id="@+id/list_of_jobs"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_jobs_list"
+        android:layout_below="@+id/btn_refresh"
         android:divider="#b5b5b5"
         android:dividerHeight="1dp"
         android:listSelector="@drawable/list_selector" />
-
     <TextView
         android:id="@+id/tv_list_is_empty"
         android:text="@string/list_is_empty"

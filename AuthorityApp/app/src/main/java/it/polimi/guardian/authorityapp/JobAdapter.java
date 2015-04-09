@@ -124,6 +124,7 @@ public class JobAdapter extends BaseAdapter implements Serializable{
         for(Job j: jObjList){
             jobsList.add(j);
         }
+        this.notifyDataSetChanged();
     }
 
     class AddJob extends AsyncTask<String, String, String> {

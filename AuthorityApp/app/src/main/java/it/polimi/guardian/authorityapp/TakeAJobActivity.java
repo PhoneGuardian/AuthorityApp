@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +20,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 
-public class TakeAJobActivity extends Activity {
+public class TakeAJobActivity extends Activity implements View.OnClickListener{
     private ListView lvJobs;
     private List<Job> jObjList;
     private JobAdapter adapter;
@@ -30,18 +31,20 @@ public class TakeAJobActivity extends Activity {
     private TextView tv_list_is_empty;
     private JSONArray events_response = null;
     private int success=0;
+    private Button btn_refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_a_job);
         lvJobs = (ListView) findViewById(R.id.list_of_jobs);
+        btn_refresh = (Button) findViewById(R.id.btn_refresh);
         tv_list_is_empty = (TextView) findViewById(R.id.tv_list_is_empty);
         u = User.getInstance();
         jObjList = new ArrayList<>();
         adapter = new JobAdapter(this, this, lvJobs,jObjList);
         //php get
-        getAvalableJobsFromServer();
+        getAvailableJobsFromServer();
         lvJobs.setAdapter(adapter);
         //To select manually the buttons with the trackball
         lvJobs.setItemsCanFocus(true);
@@ -51,7 +54,7 @@ public class TakeAJobActivity extends Activity {
         lvJobs.setClickable(false);
     }
 
-    private void getAvalableJobsFromServer() {
+    private void getAvailableJobsFromServer() {
         try {
             new GetAvailableJobs().execute().get();//starting of thread
             refreshListView();
@@ -64,6 +67,18 @@ public class TakeAJobActivity extends Activity {
     private void refreshListView() {
         adapter.updateJobs(jObjList);
         adapter.notifyDataSetChanged();
+        lvJobs.invalidateViews();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_refresh:
+                getAvailableJobsFromServer();
+                refreshListView();
+                //super.recreate();
+                break;
+        }
     }
 
     class GetAvailableJobs extends AsyncTask<String, String, String>

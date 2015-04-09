@@ -291,4 +291,5 @@
     <string name="title_activity_review_ajob">ReviewAJobActivity</string>
     <string name="title_activity_highscores">HighscoresActivity</string>
     <string name="jobs_list">Jobs list:</string>
+    <string name="refresh">Refresh</string>
 </resources>
