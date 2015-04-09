@@ -76,9 +76,19 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
             case R.id.btn_refresh:
                 getAvailableJobsFromServer();
                 refreshListView();
-                //super.recreate();
+                break;
+            case R.id.btn_return_job:
+                returnBackTheJob();
+                refreshListView();
                 break;
         }
+    }
+
+    private void returnBackTheJob() {
+        Toast.makeText(this, "not implemented yet",Toast.LENGTH_SHORT).show();
+        //async task for deleting the job from job table with job.getevent.event_id
+        //delete file from memory
+        //empty the currentjob class variables
     }
 
     class GetAvailableJobs extends AsyncTask<String, String, String>

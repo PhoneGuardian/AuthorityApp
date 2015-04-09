@@ -24,6 +24,11 @@ public class MainActivity extends Activity implements OnClickListener {
         btn_reviewAjob.setOnClickListener(this);
         btn_highscores = (Button) findViewById(R.id.btn_highscores);
         btn_highscores.setOnClickListener(this);
+
+        //read job from file if the file exists
+        CurrentJob currentJob = CurrentJob.getInstance();
+        if(currentJob.fileExists())
+            currentJob.readStateFromFile();
     }
 
 

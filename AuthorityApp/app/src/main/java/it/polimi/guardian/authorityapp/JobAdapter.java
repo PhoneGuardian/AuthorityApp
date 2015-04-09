@@ -3,6 +3,7 @@ package it.polimi.guardian.authorityapp;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,6 +25,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import static android.widget.Toast.LENGTH_LONG;
+
 /**
  * Created by Nemanja on 07/04/2015.
  */
@@ -32,7 +35,7 @@ public class JobAdapter extends BaseAdapter implements Serializable{
 
     protected ListView lvAllJobs;
     private Context ctx;
-    private Activity activity;
+    Activity activity;
     private List<Job> jobsList = new ArrayList<>();
     private static LayoutInflater inflater = null;
 
@@ -41,7 +44,9 @@ public class JobAdapter extends BaseAdapter implements Serializable{
         public Button btnTakeAJob;
         public Button btnViewOnMap;
     }
-
+    public void refresh() {
+        this.notifyDataSetChanged();
+    }
     public JobAdapter(Context context,Activity act, ListView lvJobs, List<Job> jObjList){
         ctx = context;
         activity = act;
@@ -96,8 +101,24 @@ public class JobAdapter extends BaseAdapter implements Serializable{
         @Override
         public void onClick(View v) {
             final int position = lvAllJobs.getPositionForView((View) v.getParent());
-            Toast.makeText(ctx,"Take clicked, row "+ position,Toast.LENGTH_SHORT).show();
-            new AddJob(activity, jobsList.get(position)).execute();
+            //Toast.makeText(ctx,"Take clicked, row "+ position,Toast.LENGTH_SHORT).show();
+            Job jobToTake = jobsList.get(position);
+            //read job from file if the file exists
+            CurrentJob currentJob = CurrentJob.getInstance();
+            if(currentJob.fileExists())
+                currentJob.readStateFromFile();
+
+            if(!currentJob.isSet()) {
+                new AddJob(activity, jobToTake).execute();
+                currentJob.setJob(jobToTake);
+                //save job to txt file
+                currentJob.saveStateToFile();
+                jobsList.remove(position);
+                JobAdapter.this.refresh();
+            }
+            else
+                Toast.makeText(ctx,"You already took one job. You need to review it first before taking another one.",Toast.LENGTH_SHORT).show();
+
         }
     };
 
@@ -124,7 +145,7 @@ public class JobAdapter extends BaseAdapter implements Serializable{
         for(Job j: jObjList){
             jobsList.add(j);
         }
-        this.notifyDataSetChanged();
+        this.refresh();
     }
 
     class AddJob extends AsyncTask<String, String, String> {

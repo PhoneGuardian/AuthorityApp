@@ -292,4 +292,5 @@
     <string name="title_activity_highscores">HighscoresActivity</string>
     <string name="jobs_list">Jobs list:</string>
     <string name="refresh">Refresh</string>
+    <string name="return_job">Return job</string>
 </resources>

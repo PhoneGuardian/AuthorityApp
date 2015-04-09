@@ -126,4 +126,41 @@ public class FileHelper extends Activity{
         String filepath = file.getAbsolutePath();
         return filepath;
     }
+    public boolean fileExists(String filename) {
+        String ret = "";
+
+        try {
+            File dir = getAppDirectory("GuardianAuthority");
+            File file = new File(dir, filename);
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String receiveString = "";
+            StringBuilder stringBuilder = new StringBuilder();
+
+            while ( (receiveString = bufferedReader.readLine()) != null ) {//take a line
+                stringBuilder.append(receiveString);//and add it into stringBuilder
+            }
+
+            ret = stringBuilder.toString();//when everything is read, it is put in variable ret
+            bufferedReader.close();
+            return true;
+        }
+        catch (FileNotFoundException e) {
+            Log.e("FileHelper - Error: ", "File not found: " + e.toString());//create file
+            return false;
+        } catch (IOException e) {
+            Log.e("FileHelper - Error: ", "Can not read file: " + e.toString());
+            return true;
+        }
+    }
+    public boolean fileDelete(String filename) {
+        try {
+            File dir = getAppDirectory("GuardianAuthority");
+            File file = new File(dir, filename);
+            boolean deleted = file.delete();
+            return deleted;
+        } catch (Exception e) {
+            Log.e("FileHelper - Error: ", "File not found: " + e.toString());//delete file
+            return false;
+        }
+    }
 }
