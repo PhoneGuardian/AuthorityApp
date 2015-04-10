@@ -26,6 +26,7 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
     private JobAdapter adapter;
     private User u;
     private String url_get_events_not_taken = "http://nemanjastolic.co.nf/guardian/get_events_not_taken.php";
+    private String url_delete_a_job = "http://nemanjastolic.co.nf/guardian/delete_a_job.php";
     private Event events[];
     private final JSONParser jParser = new JSONParser();
     private TextView tv_list_is_empty;
@@ -163,8 +164,7 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
                         //make textview visible
                         tv_list_is_empty.setVisibility(View.VISIBLE);
                     }
-                    else
-                    {
+                    else {
                         //hide text view
                         tv_list_is_empty.setVisibility(View.INVISIBLE);
                         //update listview
@@ -174,11 +174,69 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
                             jObjList.add(j);
                         }
                         refreshListView();
+                    }
+                }
+            });
+        }
+
+    }
+    class ReturnBackTheJob extends AsyncTask<String, String, String>
+    {
+        JSONObject json;
+        CurrentJob currentJob = CurrentJob.getInstance();
+        boolean jobExists = false;
+        int deletedOnServer=0;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+        //sends a request to delete a job with event_id specified
+        protected String doInBackground(String... args) {
+            jobExists = currentJob.isSet();
+            if(jobExists) {
+                // Building Parameters
+                List<NameValuePair> params = new ArrayList<NameValuePair>();
+                params.add(new BasicNameValuePair("event_id", currentJob.getJob().getEvent().getId()));
+                json = jParser.makeHttpRequest(url_delete_a_job, "GET", params);
+
+                try {
+                    deletedOnServer = json.getInt(Tags.TAG_SUCCESS); //1 if he doesn't exist, 0 otherwise
+                    String msg = json.getString(Tags.TAG_MESSAGE);
+                    if (deletedOnServer == 1) {                 //job found and deleted
+                        //now the returned job can be return back to list of available jobs
+                        Job j = currentJob.getJob();
+                        jObjList.add(j);
+                        //empty the currentJob and delete a file with returnBack function
+                        currentJob.returnBack();
+
+                    } else {
+                        //failed to delete a job on server
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return "ok";
+            }
+            else return "job didn't exist";
+        }
+
+        @Override
+        protected void onPostExecute(String file_url) {
+
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    /**
+                     * Updating parsed JSON data into ListView
+                     * */
+                    if( deletedOnServer == 0) {
+                        Toast.makeText(TakeAJobActivity.this, "The job is not deleted. Or it is already deleted, or there was an error while deleting.", Toast.LENGTH_SHORT).show();
 
                     }
-
-
-
+                    else {
+                        //job was returned, refresh the list
+                        refreshListView();
+                    }
                 }
             });
 

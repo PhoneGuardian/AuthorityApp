@@ -172,4 +172,13 @@ public class CurrentJob {
         boolean deleted = fileHelper.fileDelete("currentJob.txt");
         return deleted;
     }
+    public boolean returnBack() {
+        boolean deleted = this.fileDelete();
+        if(!deleted)
+            return false;
+        this.job=null;
+        this.review=null;
+        this.reviewSavedOnServer=false;
+        return true;
+    }
 }
