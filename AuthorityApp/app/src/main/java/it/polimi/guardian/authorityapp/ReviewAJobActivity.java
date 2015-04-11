@@ -66,6 +66,9 @@ public class ReviewAJobActivity extends Activity implements View.OnClickListener
                 if(!reviewComment.equals("")) {
                     new ReviewTheJob(reviewComment, jobStatus).execute();
                 }
+                else {
+                    Toast.makeText(ReviewAJobActivity.this,"Please, type the review comment.", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
