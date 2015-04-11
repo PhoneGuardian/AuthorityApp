@@ -154,7 +154,7 @@ public class JobAdapter extends BaseAdapter implements Serializable{
         private final JSONParser jParser = new JSONParser();
         Activity parent;
         int success;
-        String msg;
+        String msgAdd;
         Job job;
         @Override
         protected void onPreExecute() {
@@ -182,11 +182,11 @@ public class JobAdapter extends BaseAdapter implements Serializable{
             try
             {
                 success = json.getInt(Tags.TAG_SUCCESS);
-                msg = json.getString(Tags.TAG_MESSAGE);
+                msgAdd = json.getString(Tags.TAG_MESSAGE);
                 //had to pass activity to constructor in order to show toast inside async task
                 parent.runOnUiThread(new Runnable() {
                     public void run() {
-                        Toast.makeText(parent.getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                        Toast.makeText(parent.getBaseContext(), msgAdd, Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -196,12 +196,6 @@ public class JobAdapter extends BaseAdapter implements Serializable{
             }
 
             return null;
-        }
-
-
-        protected void onPostExecute(String file_url)
-        {
-            Toast.makeText(ctx,msg,Toast.LENGTH_SHORT).show();
         }
 
     }

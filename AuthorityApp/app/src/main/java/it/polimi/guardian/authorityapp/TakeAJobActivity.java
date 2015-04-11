@@ -33,6 +33,7 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
     private JSONArray events_response = null;
     private int success=0;
     private Button btn_refresh;
+    private Button btn_return_job;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,9 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_take_a_job);
         lvJobs = (ListView) findViewById(R.id.list_of_jobs);
         btn_refresh = (Button) findViewById(R.id.btn_refresh);
+        btn_refresh.setOnClickListener(this);
+        btn_return_job = (Button) findViewById(R.id.btn_return_job);
+        btn_return_job.setOnClickListener(this);
         tv_list_is_empty = (TextView) findViewById(R.id.tv_list_is_empty);
         u = User.getInstance();
         jObjList = new ArrayList<>();
@@ -77,6 +81,7 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
             case R.id.btn_refresh:
                 getAvailableJobsFromServer();
                 refreshListView();
+                Toast.makeText(TakeAJobActivity.this, "The list has been refreshed.",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_return_job:
                 returnBackTheJob();
@@ -86,10 +91,9 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
     }
 
     private void returnBackTheJob() {
-        Toast.makeText(this, "not implemented yet",Toast.LENGTH_SHORT).show();
-        //async task for deleting the job from job table with job.getevent.event_id
-        //delete file from memory
-        //empty the currentjob class variables
+        //async task for deleting the job from job table with job.getevent.event_id.
+        //it also deletes the file from phone memory and empties the currentJob instance
+        new ReturnBackTheJob().execute();
     }
 
     class GetAvailableJobs extends AsyncTask<String, String, String>
@@ -113,7 +117,7 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
                     // Getting Array of Events
                     events_response = json.getJSONArray(Tags.TAG_EVENTS);
                     if(events_response ==null)
-                        Toast.makeText(TakeAJobActivity.this, "No events found!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(TakeAJobActivity.this, "No events found!", Toast.LENGTH_SHORT).show();
                     else {
                         events = null;
                         events = new Event[events_response.length()];
@@ -182,10 +186,11 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
     }
     class ReturnBackTheJob extends AsyncTask<String, String, String>
     {
-        JSONObject json;
+        JSONObject jsonObj;
         CurrentJob currentJob = CurrentJob.getInstance();
         boolean jobExists = false;
         int deletedOnServer=0;
+        String msgDeleted;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -198,21 +203,11 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
                 // Building Parameters
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("event_id", currentJob.getJob().getEvent().getId()));
-                json = jParser.makeHttpRequest(url_delete_a_job, "GET", params);
+                jsonObj = jParser.makeHttpRequest(url_delete_a_job, "GET", params);
 
                 try {
-                    deletedOnServer = json.getInt(Tags.TAG_SUCCESS); //1 if he doesn't exist, 0 otherwise
-                    String msg = json.getString(Tags.TAG_MESSAGE);
-                    if (deletedOnServer == 1) {                 //job found and deleted
-                        //now the returned job can be return back to list of available jobs
-                        Job j = currentJob.getJob();
-                        jObjList.add(j);
-                        //empty the currentJob and delete a file with returnBack function
-                        currentJob.returnBack();
-
-                    } else {
-                        //failed to delete a job on server
-                    }
+                    deletedOnServer = jsonObj.getInt(Tags.TAG_SUCCESS); //1 if he doesn't exist, 0 otherwise
+                    msgDeleted = jsonObj.getString(Tags.TAG_MESSAGE);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -229,13 +224,19 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
                     /**
                      * Updating parsed JSON data into ListView
                      * */
-                    if( deletedOnServer == 0) {
+                    if( deletedOnServer == 0) {//failed to delete a job on server
                         Toast.makeText(TakeAJobActivity.this, "The job is not deleted. Or it is already deleted, or there was an error while deleting.", Toast.LENGTH_SHORT).show();
 
                     }
-                    else {
+                    else {//job found and deleted
+                        //now the returned job can be return back to list of available jobs
+                        Job j = currentJob.getJob();
+                        jObjList.add(j);
+                        //empty the currentJob and delete a file with returnBack function
+                        currentJob.returnBack();
                         //job was returned, refresh the list
                         refreshListView();
+                        Toast.makeText(TakeAJobActivity.this, "Job returned back.", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
