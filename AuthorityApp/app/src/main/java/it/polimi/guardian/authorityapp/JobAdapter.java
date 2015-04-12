@@ -2,6 +2,7 @@ package it.polimi.guardian.authorityapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -126,7 +127,11 @@ public class JobAdapter extends BaseAdapter implements Serializable{
         @Override
         public void onClick(View v) {
             final int position = lvAllJobs.getPositionForView((View) v.getParent());
-            Toast.makeText(ctx, "View clicked, row " + position, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ctx, "View clicked, row " + position, Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(ctx,ViewJobDetailsActivity.class);
+            Job jobToSee = jobsList.get(position);
+            i.putExtra("eventDescription", jobToSee.getEvent());
+            ctx.startActivity(i);
         }
     };
 
