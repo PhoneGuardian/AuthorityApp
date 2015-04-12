@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lnHighscoreHolder"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_selector"
+    android:orientation="vertical"
+    android:padding="5dip" >
+
+    <LinearLayout
+        android:id="@+id/lnH3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+        <LinearLayout
+            android:id="@+id/lnH4"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/tv_row_username"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                style="@style/button_rounded_transparent_normal"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lnH5"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+            <Button
+                android:id="@+id/tv_row_score"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                style="@style/button_rounded_transparent_normal"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
