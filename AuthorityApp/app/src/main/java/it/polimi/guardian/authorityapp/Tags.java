@@ -19,5 +19,5 @@ public class Tags {
     public static final String TAG_MESSAGE = "message";
     public static final String TAG_HIGHSCORES = "user_num_jobs";
     public static final String TAG_USERNAME = "username";
-    public static final String TAG_COUNT_JOBS = "user_num_jobs";
+    public static final String TAG_COUNT_JOBS = "num_jobs";
 }

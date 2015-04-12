@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -83,6 +84,7 @@ public class HighscoreAdapter  extends BaseAdapter implements Serializable {
         for(Highscore h: jObjList){
             highscoresList.add(h);
         }
+        Collections.sort(highscoresList);
         this.refresh();
     }
 

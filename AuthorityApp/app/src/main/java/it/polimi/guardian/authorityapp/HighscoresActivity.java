@@ -16,7 +16,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 
 public class HighscoresActivity extends Activity {
@@ -42,7 +44,13 @@ public class HighscoresActivity extends Activity {
     }
 
     private void getHighscoresFromServer() {
-        new GetHighscoresTask().execute();
+        try {
+            new GetHighscoresTask().execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     private void refreshListView() {
@@ -83,7 +91,7 @@ public class HighscoresActivity extends Activity {
                             h.setScore(Integer.parseInt(jObj.getString(Tags.TAG_COUNT_JOBS)));
                             jObjList.add(h);
                         }
-
+                        Collections.sort(jObjList);
 
                     }
                 }
