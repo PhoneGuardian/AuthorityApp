@@ -75,6 +75,15 @@
             android:name=".ViewJobDetailsActivity"
             android:label="@string/title_activity_view_job_details" >
         </activity>
+        <activity
+            android:name=".MapActivity"
+            android:label="@string/title_activity_map"
+            android:parentActivityName="it.polimi.guardian.authorityapp.ViewJobDetailsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polimi.guardian.authorityapp.ViewJobDetailsActivity" />
+            >
+        </activity>
     </application>
 
 </manifest>

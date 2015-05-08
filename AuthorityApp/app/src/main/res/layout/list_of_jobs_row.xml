@@ -47,7 +47,7 @@
                 android:text="Take this job"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                style="@style/button_rounded_transparent_normal"
+                style="@style/home_button_rounded_overlay_tall"
                 />
         </LinearLayout>
         <LinearLayout
@@ -61,7 +61,7 @@
                 android:text="View details"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                style="@style/button_rounded_transparent_normal"
+                style="@style/home_button_rounded_overlay_tall"
                 />
         </LinearLayout>
 

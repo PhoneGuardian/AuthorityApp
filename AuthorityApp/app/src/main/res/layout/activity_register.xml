@@ -19,7 +19,7 @@
         android:layout_centerInParent="true"
         android:minWidth="300dp"
         android:padding="@dimen/spacing_large"
-        android:background="@drawable/bg_white_oval_overlay"
+        android:background="@drawable/bg_white_oval"
         >
         <TextView
             android:id="@+id/tv_register_mcc"
@@ -72,7 +72,7 @@
             android:layout_marginTop="@dimen/spacing_normal"
             android:layout_centerHorizontal="true"
             android:text="@string/sign_up"
-            style="@style/button_rounded_transparent_normal"
+            style="@style/home_button_rounded_overlay_tall"
             />
 
         <ProgressBar
@@ -95,7 +95,7 @@
         android:layout_centerHorizontal="true"
         android:layout_above="@id/signup_form"
         android:layout_alignParentTop="true"
-        android:src="@drawable/title_header"
+        android:src="@drawable/title_header_white"
         />
 
 </RelativeLayout>
