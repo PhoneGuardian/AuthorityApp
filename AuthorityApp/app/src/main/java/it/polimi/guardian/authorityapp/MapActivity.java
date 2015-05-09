@@ -31,16 +31,23 @@ public class MapActivity  extends FragmentActivity implements OnMarkerClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+        lat = getIntent().getDoubleExtra("lat", 0);
+        lng = getIntent().getDoubleExtra("lng", 0);
+        eventToShow = (Event) getIntent().getSerializableExtra("eventDescription");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapf);
         map = mapFragment.getMap();
         map.setOnMarkerClickListener(this);
         map.setOnCameraChangeListener(this);
 
-        lat = getIntent().getDoubleExtra("lat", 0);
-        lng = getIntent().getDoubleExtra("lng", 0);
-        eventToShow = (Event) getIntent().getSerializableExtra("eventDescription");
         PostionOnMap();
         DrawJobMarker();
+
     }
 
     private void DrawJobMarker() {
