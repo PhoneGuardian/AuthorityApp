@@ -99,30 +99,11 @@ public class MapActivity  extends FragmentActivity implements OnMarkerClickListe
     }
     private void GetCurrentLocation()
     {
-        double[] a = getLocation();
+        double[] a = new LocationUtility(this).getLocation();
         lat = a[0];
         lng = a[1];
     }
 
-    public double[] getLocation()
-    {
-        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        List<String> providers = lm.getProviders(true);
-
-        Location l = null;
-        for (int i = 0; i < providers.size(); i++) {
-            l = lm.getLastKnownLocation(providers.get(i));
-            if (l != null)
-                break;
-        }
-        double[] gps = new double[2];
-
-        if (l != null) {
-            gps[0] = l.getLatitude();
-            gps[1] = l.getLongitude();
-        }
-        return gps;
-    }
     @Override
     public void onCameraChange(CameraPosition cameraPosition) {
 
