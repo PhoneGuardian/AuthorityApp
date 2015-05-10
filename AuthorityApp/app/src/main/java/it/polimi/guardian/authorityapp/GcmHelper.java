@@ -15,7 +15,16 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -206,6 +215,7 @@ public class GcmHelper {
     public void sendRegistrationIdToBackend() {
         // Your implementation here.
         ///ASYNCTASK THAT SENDS REGID TO OUR PHP SERVER
+        new AddGcmUser((Activity) context, this.regid).execute();
     }
 
     // Send an upstream message.
@@ -232,5 +242,55 @@ public class GcmHelper {
                 Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
             }
         }.execute(null, null, null);
+    }
+
+    class AddGcmUser extends AsyncTask<String, String, String> {
+
+        private String url_add_gcm_user = "http://nemanjastolic.co.nf/guardian/add_gcm_user.php";
+        private final JSONParser jParser = new JSONParser();
+        Activity parent;
+        int success;
+        String msgAdd;
+        User u;
+        String registrationId;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+        public AddGcmUser(Activity act, String regId) {
+            parent = act;
+            registrationId = regId;
+            u = User.getInstance();
+        }
+        protected String doInBackground(String... argss) {
+
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("registration_id", registrationId));
+            params.add(new BasicNameValuePair("auth_username", u.getUsername()));
+            params.add(new BasicNameValuePair("auth_type", u.getType()));
+            params.add(new BasicNameValuePair("auth_phone", u.getPhone()));
+
+            JSONObject json = jParser.makeHttpRequest(url_add_gcm_user, "GET", params);
+
+            try
+            {
+                success = json.getInt(Tags.TAG_SUCCESS);
+                msgAdd = json.getString(Tags.TAG_MESSAGE);
+                //had to pass activity to constructor in order to show toast inside async task
+                parent.runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(parent.getBaseContext(), msgAdd, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
     }
 }
