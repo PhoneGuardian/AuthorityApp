@@ -51,8 +51,7 @@ public class MainActivity extends Activity implements OnClickListener {
         if (currentJob.fileExists())
             currentJob.readStateFromFile();
 
-        context = getApplicationContext();
-        gcmHelper = new GcmHelper(context);
+        gcmHelper = new GcmHelper(this);
         gcmHelper.initialGcmCheck();
     }
 
