@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".RegisterActivity"
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_main_blur"
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription"
+        />
+
+    <LinearLayout
+        android:id="@+id/signup_form"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/spacing_large"
+        android:background="@drawable/bg_white_oval"
+        android:orientation="vertical"
+        >
+
+        <EditText
+            android:id="@+id/et_login_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/spacing_small"
+            android:hint="@string/username"
+            style="@style/signup_form_hint"
+            />
+
+        <View style="@style/divider_gray_dark"
+            android:layout_marginBottom="@dimen/spacing_tiny" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:animateLayoutChanges="true">
+
+            <TextView
+                android:id="@+id/tv_register_mcc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/spacing_small"
+                android:text="@string/dummy_countrycode"
+                style="@style/signup_form_base"
+                />
+            <EditText
+                android:id="@+id/et_register_phone_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/dummy_phone_numb"
+                android:inputType="phone"
+                style="@style/signup_form_hint"
+                />
+
+            <Button
+                android:id="@+id/btn_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                style="@style/signup_arrow_button"
+                />
+
+            <ProgressBar
+                android:id="@+id/spinner_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:visibility="gone"
+                style="@style/signup_progress_circle"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/signup_form"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/title_header_white"
+        />
+
+</RelativeLayout>

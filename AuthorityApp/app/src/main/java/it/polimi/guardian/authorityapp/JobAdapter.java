@@ -3,6 +3,7 @@ package it.polimi.guardian.authorityapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import static android.widget.Toast.LENGTH_LONG;
@@ -53,6 +55,7 @@ public class JobAdapter extends BaseAdapter implements Serializable{
         activity = act;
         lvAllJobs = lvJobs;
         jobsList = new ArrayList<>();
+        //sort the jobs based on lat lng of job.getEvent().getLat() job.getEvent().getLng()
         for(Job j: jObjList){
             jobsList.add(j);
         }

@@ -79,6 +79,6 @@
         android:layout_marginTop="@dimen/spacing_normal"
         android:layout_centerHorizontal="true"
         android:text="Show on map"
-        style="@style/button_rounded_transparent_normal"
+        style="@style/home_button_rounded_overlay_tall"
         />
 </RelativeLayout>

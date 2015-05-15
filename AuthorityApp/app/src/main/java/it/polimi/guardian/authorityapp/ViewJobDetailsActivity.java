@@ -1,6 +1,7 @@
 package it.polimi.guardian.authorityapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.Menu;
@@ -54,8 +55,12 @@ public class ViewJobDetailsActivity extends Activity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_view_on_map:
-                //do something
-                Toast.makeText(this, "View clicked. MapPreview not implemented", Toast.LENGTH_SHORT).show();
+                Intent i1 = new Intent(this,MapActivity.class);
+                i1.putExtra("lat", eventToShow.getLat()); // latitude
+                i1.putExtra("lng", eventToShow.getLng()); // longitude
+                i1.putExtra("eventDescription", eventToShow);//event instance
+                startActivity(i1);
+                //Toast.makeText(this, "View clicked. MapPreview not implemented", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

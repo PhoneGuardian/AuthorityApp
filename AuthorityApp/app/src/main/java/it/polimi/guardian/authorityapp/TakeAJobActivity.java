@@ -1,6 +1,7 @@
 package it.polimi.guardian.authorityapp;
 
 import android.app.Activity;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -35,6 +37,8 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
     private Button btn_refresh;
     private Button btn_return_job;
 
+    private Location myLocation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +52,9 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
         u = User.getInstance();
         jObjList = new ArrayList<>();
         adapter = new JobAdapter(this, this, lvJobs,jObjList);
+        lvJobs.setAdapter(adapter);
         //php get
         getAvailableJobsFromServer();
-        lvJobs.setAdapter(adapter);
         //To select manually the buttons with the trackball
         lvJobs.setItemsCanFocus(true);
         //And to disable the focus on the whole list items
@@ -176,6 +180,11 @@ public class TakeAJobActivity extends Activity implements View.OnClickListener{
                         for(Event e: events) {
                             Job j = new Job(e);
                             jObjList.add(j);
+                        }
+                        //sort collected data based on user's location
+                        myLocation = new LocationUtility(TakeAJobActivity.this).getLocationObject();
+                        if(myLocation != null) {
+                            Collections.sort(jObjList, new JobDistanceComparator(TakeAJobActivity.this, myLocation.getLatitude(), myLocation.getLongitude()));
                         }
                         refreshListView();
                     }
