@@ -1,5 +1,6 @@
 package it.polimi.guardian.authorityapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.content.Context;
 import android.location.Location;
@@ -25,15 +26,15 @@ public class MapActivity  extends FragmentActivity implements OnMarkerClickListe
     GoogleMap map;
     double lat;
     double lng;
+    boolean notificationFlag = false;
     Event eventToShow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        onNewIntent(getIntent());
 
-        lat = getIntent().getDoubleExtra("lat", 0);
-        lng = getIntent().getDoubleExtra("lng", 0);
-        eventToShow = (Event) getIntent().getSerializableExtra("eventDescription");
+
     }
 
     @Override
@@ -45,9 +46,29 @@ public class MapActivity  extends FragmentActivity implements OnMarkerClickListe
         map.setOnMarkerClickListener(this);
         map.setOnCameraChangeListener(this);
 
-        PostionOnMap();
+        if(!notificationFlag)
+            PostionOnMap();
+        else
+        {
+            LatLng ll = new LatLng(lat,lng);
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(ll, 15));
+        }
         DrawJobMarker();
 
+    }
+
+    public void onNewIntent(Intent intent) {
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            if (extras.containsKey("notificationFlag")) {
+                notificationFlag = extras.getBoolean("notificationFlag", false);
+            }
+
+                lat = extras.getDouble("lat", 0);
+                lng = extras.getDouble("lng", 0);
+                eventToShow = (Event) extras.getSerializable("eventDescription");
+
+        }
     }
 
     private void DrawJobMarker() {

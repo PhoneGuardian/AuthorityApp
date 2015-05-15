@@ -3,6 +3,7 @@ package it.polimi.guardian.authorityapp;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -76,7 +77,7 @@ public class GcmIntentService extends IntentService {
                 }
                 Log.i(TAG, "Completed work @ " + SystemClock.elapsedRealtime());
                 // Post notification of received message.
-                sendNotification("Received: " + extras.toString());
+                sendNotification(extras.toString());
                 Log.i(TAG, "Received: " + extras.toString());
             }
         }
@@ -91,60 +92,64 @@ public class GcmIntentService extends IntentService {
         mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, MainActivity.class), 0);
-
         String[] data = msg.split("&");
         Event ev = new Event();
-        ev.setLat(Integer.parseInt(data[0]));
-        ev.setLng(Integer.parseInt(data[1]));
-        ev.setDescription(data[2]);
-        ev.setEvent_time(data[3]);
-        ev.setLocation_acc(Float.parseFloat(data[4]));
-        ev.setType_of_event(data[5]);
-        ev.setUser_phone(data[6]);
-        ev.setAnonymous(Integer.parseInt(data[7]));
-        ev.setAddress(data[8]);
+        ev.setLat(Double.parseDouble(data[1]));
+        ev.setLng(Double.parseDouble(data[2]));
+        ev.setDescription(data[3]);
+        ev.setEvent_time(data[4]);
+        ev.setLocation_acc(Float.parseFloat(data[5]));
+        ev.setType_of_event(data[6]);
+        ev.setUser_phone(data[7]);
+        ev.setAnonymous(Integer.parseInt(data[8]));
+        ev.setAddress(data[9]);
 
-        Context ctx = getApplicationContext();
-        Intent clickActivity = new Intent(ctx,MapActivity.class);
-        clickActivity.putExtra("lat",ev.getLat());
-        clickActivity.putExtra("lng",ev.getLng());
-        clickActivity.putExtra("eventDescription",ev);
+        Intent notificationIntent = new Intent(getApplicationContext(), MapActivity.class);
+
+        notificationIntent.putExtra("notificationFlag",true);
+        notificationIntent.putExtra("lat",ev.getLat());
+        notificationIntent.putExtra("lng", ev.getLng());
+        notificationIntent.putExtra("eventDescription",ev);
+
+        notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingNotificationIntent = PendingIntent.getActivity(getApplicationContext(),0,notificationIntent,PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder mBuilder = null;
-        switch (data[5]) {
+        switch (data[6]) {
             case "F":
                 mBuilder =
                         new NotificationCompat.Builder(this)
                                 .setSmallIcon(R.drawable.flame_gray)
+                                .setDefaults(Notification.DEFAULT_SOUND)
                                 .setContentTitle("Alert!")
                                 .setStyle(new NotificationCompat.BigTextStyle()
-                                        .bigText(data[2]))
-                                .setContentText(data[2]);
+                                        .bigText(data[3]))
+                                .setContentText(data[3]);
                 break;
             case "P":
                 mBuilder =
                         new NotificationCompat.Builder(this)
                                 .setSmallIcon(R.drawable.police_badge_gray)
                                 .setContentTitle("Alert!")
+                                .setDefaults(Notification.DEFAULT_SOUND)
                                 .setStyle(new NotificationCompat.BigTextStyle()
-                                        .bigText(data[2]))
-                                .setContentText(data[2]);
+                                        .bigText(data[3]))
+                                .setContentText(data[3]);
                 break;
             case "E":
                 mBuilder =
                         new NotificationCompat.Builder(this)
                                 .setSmallIcon(R.drawable.ambulance_gray)
                                 .setContentTitle("Alert!")
+                                .setDefaults(Notification.DEFAULT_SOUND)
                                 .setStyle(new NotificationCompat.BigTextStyle()
-                                        .bigText(data[2]))
-                                .setContentText(data[2]);
+                                        .bigText(data[3]))
+                                .setContentText(data[3]);
                 break;
         }
 
 
-        mBuilder.setContentIntent(contentIntent);
+        mBuilder.setContentIntent(pendingNotificationIntent);
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
 }
