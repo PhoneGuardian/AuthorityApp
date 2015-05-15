@@ -20,7 +20,7 @@
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:text="@string/refresh"
-            style="@style/button_image_text_transparent"
+            style="@style/button_refresh_text_transparent"
             />
         <Button
             android:id="@+id/btn_return_job"
@@ -29,9 +29,8 @@
             android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginRight="@dimen/spacing_normal"
             android:singleLine="true"
-            android:text="Cancel current job"
-            android:drawableLeft="@drawable/button_selector_image_cancel_text_transparent"
-            style="@style/button_image_text_transparent"
+            android:text="@string/cancel_current_job"
+            style="@style/button_cancel_text_transparent"
             />
     </LinearLayout>
 
@@ -42,7 +41,7 @@
         android:layout_below="@id/ln_btn_holder"
         android:paddingLeft="@dimen/spacing_normal"
         android:textAllCaps="true"
-        android:text="@string/jobs_list"
+        android:text="@string/job_list"
         style="@style/app_text_normal"
         />
 

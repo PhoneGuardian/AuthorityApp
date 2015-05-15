@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="true"
-            android:text="@string/view_details"
+            android:text="@string/details"
             style="@style/app_text_normal"
             />
 
@@ -132,7 +132,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/spacing_small"
             android:layout_gravity="center_horizontal"
-            android:text="Show on map"
+            android:text="@string/show_on_map"
             style="@style/button_flat_gray_thin"
             />
     </LinearLayout>

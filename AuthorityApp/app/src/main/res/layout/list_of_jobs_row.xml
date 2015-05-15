@@ -33,14 +33,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_small"
-                android:text="Take this job"
-                style="@style/button_flat_gray_thin_small"/>
+                android:text="@string/take_job"
+                android:drawableRight="@drawable/button_selector_image_cancel_text_transparent"
+                style="@style/button_image_text_transparent"
+                />
 
             <Button android:id="@+id/btn_row_view"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-
-                android:text="View details"
+                android:text="@string/details"
                 style="@style/button_flat_gray_thin_small"/>
 
         </LinearLayout>

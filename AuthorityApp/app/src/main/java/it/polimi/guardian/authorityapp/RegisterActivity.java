@@ -107,27 +107,6 @@ public class RegisterActivity extends  Activity  implements OnClickListener {
         ((RelativeLayout) findViewById(R.id.layout_register)).setOnTouchListener(hideKeyboardlistener);
     }
 
-    String GetCountryZipCode()
-    {
-
-        String CountryID="";
-        String CountryZipCode="+";
-
-        TelephonyManager manager = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
-        CountryID= manager.getSimCountryIso().toUpperCase();
-        String[] rl=this.getResources().getStringArray(R.array.CountryCodes);
-        for(int i=0;i<rl.length;i++)
-        {
-            String[] g=rl[i].split(",");
-            if(g[1].trim().equals(CountryID.trim()))
-            {
-                CountryZipCode+=g[0];
-                break;
-            }
-        }
-        return CountryZipCode;
-    }
-
 
     @Override
     public void onClick(View v) {
