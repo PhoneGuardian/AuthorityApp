@@ -20,7 +20,7 @@
         android:layout_marginBottom="@dimen/spacing_normal"
         android:layout_centerInParent="true"
         android:text="@string/take_a_job"
-        android:drawableLeft="@drawable/alert_icon_blue"
+        android:drawableLeft="@drawable/briefcase"
         style="@style/home_button_rounded_overlay_tall"
         />
 
@@ -33,7 +33,7 @@
         android:layout_marginBottom="@dimen/spacing_normal"
         android:layout_centerInParent="true"
         android:text="@string/review_a_job"
-        android:drawableLeft="@drawable/alert_icon_blue"
+        android:drawableLeft="@drawable/review"
         style="@style/home_button_rounded_overlay_tall"
         />
     <Button
@@ -44,7 +44,7 @@
         android:layout_marginBottom="@dimen/spacing_normal"
         android:layout_centerInParent="true"
         android:text="@string/highscores"
-        android:drawableLeft="@drawable/alert_icon_blue"
+        android:drawableLeft="@drawable/podium"
         style="@style/home_button_rounded_overlay_tall"
         />
 
