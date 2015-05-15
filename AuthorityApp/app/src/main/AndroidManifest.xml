@@ -66,23 +66,23 @@
         </activity>
         <activity
             android:name=".TakeAJobActivity"
-            android:label="@string/title_activity_take_ajob" >
+            android:label="" >
         </activity>
         <activity
             android:name=".ReviewAJobActivity"
-            android:label="@string/title_activity_review_ajob" >
+            android:label="" >
         </activity>
         <activity
             android:name=".HighscoresActivity"
-            android:label="@string/title_activity_highscores" >
+            android:label="" >
         </activity>
         <activity
             android:name=".ViewJobDetailsActivity"
-            android:label="@string/title_activity_view_job_details" >
+            android:label="" >
         </activity>
         <activity
             android:name=".MapActivity"
-            android:label="@string/title_activity_map"
+            android:label=""
             android:parentActivityName="it.polimi.guardian.authorityapp.ViewJobDetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

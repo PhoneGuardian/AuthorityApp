@@ -1,84 +1,139 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    tools:context="it.polimi.guardian.authorityapp.ViewJobDetailsActivity">
+    android:padding="@dimen/spacing_normal"
+    android:orientation="vertical">
+    >
 
-    <ImageView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/bg_main"
-        android:scaleType="centerCrop"
-        tools:ignore="ContentDescription"
-        />
-    <TextView
-        android:id="@+id/tv_label_description"
-        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Job description: "
-        android:textColor="@color/white"
-        />
-    <TextView
-        android:id="@+id/tv_details_description"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_label_description"
-        android:text="Some description"
-        android:textColor="@color/white"/>
-    <TextView
-        android:id="@+id/tv_label_address"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_details_description"
-        android:text="Reported address: "
-        android:textColor="@color/white"
-        />
-    <TextView
-        android:id="@+id/tv_details_address"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_label_address"
-        android:text="Some address"
-        android:textColor="@color/white"/>
-    <TextView
-        android:id="@+id/tv_label_phone"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_details_address"
-        android:text="Phone number: "
-        android:textColor="@color/white"
-        />
-    <TextView
-        android:id="@+id/tv_details_phone"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_label_phone"
-        android:text="Some phone"
-        android:textColor="@color/white"/>
-    <TextView
-        android:id="@+id/tv_label_time"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_details_phone"
-        android:text="Reporting time: "
-        android:textColor="@color/white"
-        />
-    <TextView
-        android:id="@+id/tv_details_time"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_label_time"
-        android:text="Date format"
-        android:textColor="@color/white"/>
-    <Button
-        android:id="@+id/btn_view_on_map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_details_time"
-        android:layout_marginTop="@dimen/spacing_normal"
-        android:layout_centerHorizontal="true"
-        android:text="Show on map"
-        style="@style/home_button_rounded_overlay_tall"
-        />
-</RelativeLayout>
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:text="@string/view_details"
+            style="@style/app_text_normal"
+            />
+
+        <View style="@style/divider_black"
+            android:id="@+id/filter_list_header_divider"
+            android:layout_marginBottom="@dimen/spacing_normal"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/spacing_tiny">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:minEms="6"
+                android:text="@string/date"
+                style="@style/app_text_normal"
+                />
+
+            <TextView
+                android:id="@+id/tv_details_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/app_text_normal_light"
+                />
+        </LinearLayout>
+
+        <View style="@style/divider_gray"
+            android:layout_marginBottom="@dimen/spacing_large" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/spacing_tiny">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:minEms="6"
+                android:text="@string/address"
+                style="@style/app_text_normal"
+                />
+
+            <TextView
+                android:id="@+id/tv_details_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/app_text_normal_light"
+                />
+        </LinearLayout>
+        <View style="@style/divider_gray"
+            android:layout_marginBottom="@dimen/spacing_large" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/spacing_tiny">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:minEms="6"
+                android:text="@string/description"
+                style="@style/app_text_normal"
+                />
+
+            <TextView
+                android:id="@+id/tv_details_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/app_text_normal_light"
+                />
+        </LinearLayout>
+
+        <View style="@style/divider_gray"
+            android:layout_marginBottom="@dimen/spacing_large" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/spacing_tiny">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:minEms="7"
+                android:text="@string/phone_num"
+                style="@style/app_text_normal"
+                />
+
+            <TextView
+                android:id="@+id/tv_details_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/app_text_normal_light"
+                />
+        </LinearLayout>
+
+        <View style="@style/divider_gray"
+            android:layout_marginBottom="@dimen/spacing_large" />
+
+        <Button
+            android:id="@+id/btn_view_on_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_small"
+            android:layout_gravity="center_horizontal"
+            android:text="Show on map"
+            style="@style/button_flat_gray_thin"
+            />
+    </LinearLayout>
+</ScrollView>

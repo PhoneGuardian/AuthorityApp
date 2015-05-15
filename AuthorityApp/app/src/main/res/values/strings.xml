@@ -31,7 +31,7 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="repeat_password">Repeat password:</string>
     <string name="name_lastname">Name and Last name:</string>
-    <string name="phone_num">phone number</string>
+    <string name="phone_num">phone number:</string>
     <string name="title_activity_show_users">ShowUsersActivity</string>
     <string name="finish">Finish</string>
     <string name="users">Users</string>
