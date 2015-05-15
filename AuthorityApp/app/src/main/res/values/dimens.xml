@@ -15,11 +15,12 @@
     <dimen name="spacing_tiny">4dp</dimen>
 
     <!-- typical sizes of views -->
-    <dimen name="button_height_tall">60dp</dimen>
+    <dimen name="button_height_tall">55dp</dimen>
     <dimen name="button_height_normal">40dp</dimen>
     <dimen name="button_height_short">32dp</dimen>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="checkbox_padding_left">24dp</dimen>
+    <dimen name="corner_radius">4dp</dimen>
+    <dimen name="layer_padding">2dp</dimen>
+    <dimen name="layer_padding_negative">-2dp</dimen>
 </resources>

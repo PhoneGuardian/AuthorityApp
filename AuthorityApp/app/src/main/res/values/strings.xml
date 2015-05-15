@@ -302,4 +302,5 @@
     <string name="review_comment">Type a comment</string>
     <string name="review_the_job">Review the job</string>
     <string name="title_activity_view_job_details">ViewJobDetailsActivity</string>
+    <string name="dummy_countrycode">+39</string>
 </resources>

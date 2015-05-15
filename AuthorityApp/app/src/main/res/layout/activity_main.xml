@@ -8,11 +8,10 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/bg_main"
+        android:src="@drawable/bg_main_blur"
         android:scaleType="centerCrop"
         tools:ignore="ContentDescription"
         />
-
 
     <Button
         android:id="@+id/btn_take_a_job"
@@ -21,17 +20,11 @@
         android:layout_marginBottom="@dimen/spacing_normal"
         android:layout_centerInParent="true"
         android:text="@string/take_a_job"
-        android:drawableLeft="@drawable/alert_icon"
+        android:drawableLeft="@drawable/alert_icon_blue"
         style="@style/home_button_rounded_overlay_tall"
         />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/btn_take_a_job"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/title_header"
-        />
+
+
     <Button
         android:id="@+id/btn_review_a_job"
         android:layout_below="@id/btn_take_a_job"
@@ -40,7 +33,7 @@
         android:layout_marginBottom="@dimen/spacing_normal"
         android:layout_centerInParent="true"
         android:text="@string/review_a_job"
-        android:drawableLeft="@drawable/map_icon"
+        android:drawableLeft="@drawable/alert_icon_blue"
         style="@style/home_button_rounded_overlay_tall"
         />
     <Button
@@ -51,8 +44,16 @@
         android:layout_marginBottom="@dimen/spacing_normal"
         android:layout_centerInParent="true"
         android:text="@string/highscores"
-        android:drawableLeft="@drawable/alert_icon"
+        android:drawableLeft="@drawable/alert_icon_blue"
         style="@style/home_button_rounded_overlay_tall"
         />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/btn_take_a_job"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/title_header_white"
+        />
 </RelativeLayout>
