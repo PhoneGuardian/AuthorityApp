@@ -342,6 +342,7 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="job_review">Job review</string>
     <string name="write_review">Write review</string>
+    <string name="ranking">Ranking</string>
 
 
 </resources>
