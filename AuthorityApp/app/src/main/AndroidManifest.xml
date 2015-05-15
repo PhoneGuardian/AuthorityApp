@@ -66,19 +66,23 @@
         </activity>
         <activity
             android:name=".TakeAJobActivity"
-            android:label="" >
+            android:label=""
+            android:parentActivityName=".MainActivity">
         </activity>
         <activity
             android:name=".ReviewAJobActivity"
-            android:label="" >
+            android:label=""
+            android:parentActivityName=".MainActivity">
         </activity>
         <activity
             android:name=".HighscoresActivity"
-            android:label="" >
+            android:label=""
+            android:parentActivityName=".MainActivity">
         </activity>
         <activity
             android:name=".ViewJobDetailsActivity"
-            android:label="" >
+            android:label=""
+            >
         </activity>
         <activity
             android:name=".MapActivity"

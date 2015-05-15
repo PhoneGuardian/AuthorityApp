@@ -340,6 +340,8 @@
         <item>263,ZW</item>
     </string-array>
     <string name="title_activity_map">MapActivity</string>
+    <string name="job_review">Job review</string>
+    <string name="write_review">Write review</string>
 
 
 </resources>

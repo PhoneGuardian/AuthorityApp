@@ -1,51 +1,54 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_small"
     tools:context="it.polimi.guardian.authorityapp.ReviewAJobActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/bg_main"
-        android:scaleType="centerCrop"
-        tools:ignore="ContentDescription"
-        />
-    <ImageView
-        android:id="@+id/img_header"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/title_header"
+        android:textAllCaps="true"
+        android:text="@string/job_review"
+        style="@style/app_text_normal"
         />
-    <EditText
-        android:id="@+id/et_review_comment"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/img_header"
-        android:layout_marginBottom="@dimen/spacing_large"
-        android:hint="@string/review_comment"
-        style="@style/signup_form_hint"
-        />
+
+    <View style="@style/divider_black"
+        android:id="@+id/filter_list_header_divider"
+        android:layout_marginBottom="@dimen/spacing_normal"/>
+
     <Spinner
         android:id="@+id/spinner_job_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_small"
         android:entries="@array/JobStatus"
         android:prompt="@string/job_status_prompt"
-        android:layout_below="@id/et_review_comment"
         />
+
+    <it.polimi.guardian.authorityapp.LineEditText android:id="@+id/et_review_comment"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_marginBottom="@dimen/spacing_large"
+        android:inputType="textMultiLine"
+        android:hint="@string/write_review"
+        android:lines="5"
+        android:minLines="3"
+        style="@style/addlocation_LineEditText"
+        />
+
+
+
+
     <Button
         android:id="@+id/btn_review_the_job"
-        android:layout_below="@id/spinner_job_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_normal"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/spacing_small"
         android:text="@string/review_the_job"
-        android:drawableLeft="@drawable/map_icon"
-        style="@style/home_button_rounded_overlay_tall"
+        style="@style/button_flat_gray_thin"
         />
-</RelativeLayout>
+</LinearLayout>

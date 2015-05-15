@@ -39,6 +39,7 @@
             <Button android:id="@+id/btn_row_view"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+
                 android:text="View details"
                 style="@style/button_flat_gray_thin_small"/>
 
