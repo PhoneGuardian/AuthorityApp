@@ -1,70 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ln1"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/list_selector"
-    android:orientation="vertical"
-    android:padding="5dip" >
+    android:orientation="vertical" >
 
     <LinearLayout
-        android:id="@+id/ln2"
+        android:id="@+id/ln1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="2">
-        <ScrollView
-            android:id="@+id/scrollView1"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-                <TextView
-                    android:id="@+id/tv_job_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Description"
-                    android:textColor="@color/white"/>
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+        android:layout_marginBottom="@dimen/spacing_tiny"
+        >
 
-    <LinearLayout
-        android:id="@+id/ln3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal" >
-        <LinearLayout
-            android:id="@+id/ln4"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+        <TextView
+            android:id="@+id/tv_job_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal" >
-            <Button
-                android:id="@+id/btn_row_take"
+            android:maxLines="3"
+            android:layout_margin="@dimen/spacing_small"
+            android:text="DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription"
+            style="@style/app_text_normal_light"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_tiny"
+            android:gravity="right"
+            android:orientation="vertical" >
+
+            <Button android:id="@+id/btn_row_take"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_small"
                 android:text="Take this job"
+                style="@style/button_flat_gray_thin_small"/>
+
+            <Button android:id="@+id/btn_row_view"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                style="@style/button_rounded_transparent_normal"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/ln5"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal" >
-            <Button
-                android:id="@+id/btn_row_view"
                 android:text="View details"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                style="@style/button_rounded_transparent_normal"
-                />
+                style="@style/button_flat_gray_thin_small"/>
         </LinearLayout>
+
 
     </LinearLayout>
-
+    <View style="@style/divider_gray" />
 </LinearLayout>
