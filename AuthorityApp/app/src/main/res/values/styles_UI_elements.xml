@@ -59,8 +59,23 @@
         <item name="android:drawableLeft">@drawable/button_selector_image_cancel_text_transparent</item>
     </style>
 
-    <style name="button_arrow_text_transparent" parent="button_image_text_transparent">
-        <item name="android:drawableRight">@drawable/button_selector_image_refresh_text_transparent</item>
+    <style name="button_image_text_transparent_short" >
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="android:height">@dimen/button_height_short</item>
+        <item name="android:minHeight">@dimen/button_height_short</item>
+        <item name="android:paddingLeft">@dimen/spacing_small</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <style name="button_check_text_transparent" parent="button_image_text_transparent_short">
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="android:drawableRight">@drawable/button_selector_image_check_text_transparent</item>
+    </style>
+    <style name="button_arrow_text_transparent" parent="button_image_text_transparent_short">
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="android:drawableRight">@drawable/button_selector_image_arrow_text_transparent</item>
     </style>
 
 

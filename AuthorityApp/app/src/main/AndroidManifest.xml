@@ -86,12 +86,7 @@
         </activity>
         <activity
             android:name=".MapActivity"
-            android:label=""
-            android:parentActivityName="it.polimi.guardian.authorityapp.ViewJobDetailsActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="it.polimi.guardian.authorityapp.ViewJobDetailsActivity" />
-            >
+            android:label="">
         </activity>
 
         <receiver

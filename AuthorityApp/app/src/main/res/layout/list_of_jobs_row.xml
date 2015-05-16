@@ -18,8 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:maxLines="3"
+            android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/spacing_small"
-            android:text="DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription"
+            android:text="DescriptionDescription DescriptionDescription"
             style="@style/app_text_normal_light"/>
 
         <LinearLayout
@@ -32,17 +33,16 @@
             <Button android:id="@+id/btn_row_take"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_small"
+                android:layout_marginBottom="@dimen/spacing_tiny"
                 android:text="@string/take_job"
-                android:drawableRight="@drawable/button_selector_image_cancel_text_transparent"
-                style="@style/button_image_text_transparent"
+                style="@style/button_check_text_transparent"
                 />
 
             <Button android:id="@+id/btn_row_view"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/details"
-                style="@style/button_flat_gray_thin_small"/>
+                style="@style/button_arrow_text_transparent"/>
 
         </LinearLayout>
 
