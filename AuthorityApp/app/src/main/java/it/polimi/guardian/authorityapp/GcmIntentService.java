@@ -104,6 +104,12 @@ public class GcmIntentService extends IntentService {
         ev.setAnonymous(Integer.parseInt(data[8]));
         ev.setAddress(data[9]);
 
+        String anonymous="";
+        if(ev.getAnonymous()==1)
+            anonymous = "Anonymous tip:";
+        else
+            anonymous = ev.getUser_phone()+" ";
+
         Intent notificationIntent = new Intent(getApplicationContext(), MapActivity.class);
 
         notificationIntent.putExtra("notificationFlag",true);
@@ -123,8 +129,8 @@ public class GcmIntentService extends IntentService {
                                 .setDefaults(Notification.DEFAULT_SOUND)
                                 .setContentTitle("Alert!")
                                 .setStyle(new NotificationCompat.BigTextStyle()
-                                        .bigText(data[3]))
-                                .setContentText(data[3]);
+                                        .bigText(anonymous+" "+data[3]))
+                                .setContentText(anonymous+" "+data[3]);
                 break;
             case "P":
                 mBuilder =
@@ -133,8 +139,8 @@ public class GcmIntentService extends IntentService {
                                 .setContentTitle("Alert!")
                                 .setDefaults(Notification.DEFAULT_SOUND)
                                 .setStyle(new NotificationCompat.BigTextStyle()
-                                        .bigText(data[3]))
-                                .setContentText(data[3]);
+                                        .bigText(anonymous+" "+data[3]))
+                                .setContentText(anonymous+" "+data[3]);
                 break;
             case "E":
                 mBuilder =
@@ -143,8 +149,8 @@ public class GcmIntentService extends IntentService {
                                 .setContentTitle("Alert!")
                                 .setDefaults(Notification.DEFAULT_SOUND)
                                 .setStyle(new NotificationCompat.BigTextStyle()
-                                        .bigText(data[3]))
-                                .setContentText(data[3]);
+                                        .bigText(anonymous+" "+data[3]))
+                                .setContentText(anonymous+" "+data[3]);
                 break;
         }
 
