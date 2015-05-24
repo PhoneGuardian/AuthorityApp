@@ -13,47 +13,62 @@
         tools:ignore="ContentDescription"
         />
 
-    <Button
-        android:id="@+id/btn_take_a_job"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_normal"
-        android:layout_centerInParent="true"
-        android:text="@string/take_a_job"
-        android:drawableLeft="@drawable/briefcase"
-        style="@style/home_button_rounded_overlay_tall"
-        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fillViewport="true"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           >
+
+            <Button
+                android:id="@+id/btn_take_a_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_normal"
+                android:layout_centerInParent="true"
+                android:text="@string/take_a_job"
+                android:drawableLeft="@drawable/briefcase"
+                style="@style/home_button_rounded_overlay_tall"
+                />
 
 
-    <Button
-        android:id="@+id/btn_review_a_job"
-        android:layout_below="@id/btn_take_a_job"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_normal"
-        android:layout_centerInParent="true"
-        android:text="@string/review_a_job"
-        android:drawableLeft="@drawable/review"
-        style="@style/home_button_rounded_overlay_tall"
-        />
-    <Button
-        android:id="@+id/btn_highscores"
-        android:layout_below="@+id/btn_review_a_job"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_normal"
-        android:layout_centerInParent="true"
-        android:text="@string/highscores"
-        android:drawableLeft="@drawable/podium"
-        style="@style/home_button_rounded_overlay_tall"
-        />
+            <Button
+                android:id="@+id/btn_review_a_job"
+                android:layout_below="@id/btn_take_a_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_normal"
+                android:layout_centerInParent="true"
+                android:text="@string/review_a_job"
+                android:drawableLeft="@drawable/review"
+                style="@style/home_button_rounded_overlay_tall"
+                />
+            <Button
+                android:id="@+id/btn_highscores"
+                android:layout_below="@+id/btn_review_a_job"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height_tall"
+                android:layout_marginBottom="@dimen/spacing_normal"
+                android:layout_centerInParent="true"
+                android:text="@string/highscores"
+                android:drawableLeft="@drawable/podium"
+                style="@style/home_button_rounded_overlay_tall"
+                />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/btn_take_a_job"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/title_header_white"
-        />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@id/btn_take_a_job"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/title_header_white"
+                />
+        </RelativeLayout>
+
+    </ScrollView>
+
 </RelativeLayout>

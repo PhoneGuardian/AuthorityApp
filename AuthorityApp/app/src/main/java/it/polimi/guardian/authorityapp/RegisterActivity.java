@@ -284,7 +284,6 @@ public class RegisterActivity extends  Activity  implements OnClickListener {
                     cred.setUsername(jObj.getString("Username"));
                     cred.setPhoneNumber(jObj.getString("PhoneNumber"));
                     cred.setUserType(jObj.getString("UserType"));
-                    Toast.makeText(context, "Credentials already existed.", LENGTH_LONG).show();
                     return cred;
                 } else {
                     Toast.makeText(context, "File exists, but couldn't parse.", LENGTH_LONG).show();

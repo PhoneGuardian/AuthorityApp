@@ -16,7 +16,8 @@
     </style>
 
     <style name="home_button_rounded_overlay_tall" parent="button_base">
-        <item name="android:minHeight">0dp</item>
+        <item name="android:minHeight">@dimen/button_height_tall</item>
+        <item name="android:maxHeight">@dimen/button_height_tall</item>
         <item name="android:minWidth">300dp</item>
         <item name="android:height">@dimen/button_height_tall</item>
         <item name="android:background">@drawable/btn_selector_oval_overlay</item>
