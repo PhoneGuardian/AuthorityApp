@@ -123,10 +123,12 @@ public class ReviewAJobActivity extends Activity implements View.OnClickListener
                     /**
                      * Updating parsed JSON data into ListView
                      * */
-                    if( reviewSaved == 0) {
-                        Toast.makeText(ReviewAJobActivity.this, "The review is not saved!", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
+
+                     if( reviewSaved == 0 &&  !currentJob.isSet()) {
+                        Toast.makeText(ReviewAJobActivity.this, "First you have to take a job in order to review it", Toast.LENGTH_SHORT).show();
+                    } else if (reviewSaved == 0){
+                        Toast.makeText(ReviewAJobActivity.this, "You have to first take a job to review itThe review is not saved!", Toast.LENGTH_SHORT).show();
+                    }else {
                         //review is saved on server.
                         currentJob.setReviewSavedOnServer(true);
                         //set review inside currentJob
@@ -136,6 +138,7 @@ public class ReviewAJobActivity extends Activity implements View.OnClickListener
                         //delete currentJob.txt
                         currentJob.fileDelete();
                         Toast.makeText(ReviewAJobActivity.this, "The review has been saved. Now you can take another job.", Toast.LENGTH_SHORT).show();
+                        et_review_comment.setText("");
                     }
                 }
             });

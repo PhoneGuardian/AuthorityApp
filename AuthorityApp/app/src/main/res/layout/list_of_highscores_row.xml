@@ -25,5 +25,4 @@
             android:layout_height="wrap_content"
             />
     </LinearLayout>
-    <View style="@style/divider_gray" />
 </LinearLayout>

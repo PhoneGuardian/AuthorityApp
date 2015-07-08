@@ -19,10 +19,18 @@
         android:id="@+id/filter_list_header_divider"
         android:layout_marginBottom="@dimen/spacing_normal"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#JOBS  USER"
+        style="@style/app_text_small_light"/>
+
+    <View style="@style/divider_gray"/>
 
     <ListView
         android:id="@+id/list_highscores"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small"
         android:listSelector="@drawable/list_selector" />
 </LinearLayout>

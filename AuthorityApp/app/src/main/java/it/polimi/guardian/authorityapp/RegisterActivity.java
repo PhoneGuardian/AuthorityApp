@@ -133,7 +133,7 @@ public class RegisterActivity extends  Activity  implements OnClickListener {
                         }
 
                         @Override
-                        public void onVerificationSuccess() {
+                        public void onVerificationSucess() {
                             enableSignUp();
                             checkAndSaveUser(userNm, Cognalys.getCountryCode(RegisterActivity.this)+ phone, type);
                         }
